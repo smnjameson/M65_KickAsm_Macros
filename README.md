@@ -1,7 +1,7 @@
 
 # Mega65 - KickAssembler 45GS02 Pseudocommands
 
-A very simple way to use all the 45GS02 commands in KickAssembler right now.
+A set of pseudocommands for KickAssembler to allow you to use all the 45GS02 instructions.
 
 ## Usage
 Simply put m65opcodes.asm somewhere in your project structure and import it at the top of your entry file:
