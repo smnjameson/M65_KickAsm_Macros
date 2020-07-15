@@ -37,9 +37,10 @@ Some opcodes require a colon prefix (generally when an existing opcode has new a
 	:stx $beef, y
 	:sty $beef, x	
 ```
-Additionally due to pseudocommand and Kick assembler restrictions the stack relative indirect indexed by Y mode of LDA has its own mnemonic:
+Additionally due to pseudocommand and Kick assembler restrictions the stack relative indirect indexed by Y mode of LDA and STA have their own mnemonic:
 ```
 	ldasp ($ff), y
+	stasp ($ff), y
 ``` 
 
 

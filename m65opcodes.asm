@@ -392,6 +392,13 @@
 	.if(value > $ff ) .error "':sta ($nn),z' requires zeropage address"
 	.byte $92, value
 }
+.pseudocommand stasp arg {
+	.var value = arg.getValue()
+	.var type = arg.getType()
+	.if(type != AT_IZEROPAGEY) .error "':stasp' only accepts AT_IZEROPAGEY"
+	.if(value > $ff ) .error "':stasp ($nn),y' requires zeropage address"
+	.byte $82, value
+}
 .pseudocommand stx arg {
 	.var value = arg.getValue()
 	.var type = arg.getType()

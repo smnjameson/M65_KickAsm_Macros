@@ -11,7 +11,7 @@ file_extensions:
 scope: source.assembly.kickassembler
 contexts:
   main:
-    - match: \b(rmb0|adc|and|asl|asr|asw|bit|clc|cld|cle|cli|clv|cmp|cpx|cpy|cpz|dec|dew|dex|dey|dez|eom|eor|inc|inw|inx|iny|inz|lda|ldasp|ldx|ldy|ldz|lsr|map|neg|ora|pha|php|phw|phx|phy|phz|pla|plp|plx|ply|plz|rmb0|rmb1|rmb2|rmb3|rmb4|rmb5|rmb6|rmb7|rol|ror|row|sbc|sec|sed|see|sei|smb0|smb1|smb2|smb3|smb4|smb5|smb6|smb7|sta|stx|sty|stz|tab|tax|txa|tay|tya|tys|taz|tza|tba|trb|tsb|tsx|tsy|txs)\b
+    - match: \b(rmb0|adc|and|asl|asr|asw|bit|clc|cld|cle|cli|clv|cmp|cpx|cpy|cpz|dec|dew|dex|dey|dez|eom|eor|inc|inw|inx|iny|inz|lda|ldasp|ldx|ldy|ldz|lsr|map|neg|ora|pha|php|phw|phx|phy|phz|pla|plp|plx|ply|plz|rmb0|rmb1|rmb2|rmb3|rmb4|rmb5|rmb6|rmb7|rol|ror|row|sbc|sec|sed|see|sei|smb0|smb1|smb2|smb3|smb4|smb5|smb6|smb7|sta|stasp|stx|sty|stz|tab|tax|txa|tay|tya|tys|taz|tza|tba|trb|tsb|tsx|tsy|txs)\b
       scope: keyword
     - match: \b(bbr0|bbr1|bbr2|bbr3|bbr4|bbr5|bbr6|bbr7|bbs0|bbs1|bbs2|bbs3|bbs4|bbs5|bbs6|bbs7|bcc|bcs|beq|bmi|bne|bpl|bra|brk|bsr|bvc|bvs|jmp|jsr|rti|rts)\b
       scope: keyword.control
