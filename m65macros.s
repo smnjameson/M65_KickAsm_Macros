@@ -20,29 +20,33 @@
 }
 
 .macro enableVIC3Registers () {
+		lda #$00
+		tax 
+		tay 
+		taz 
+		map
+		eom
+
 		lda #$A5	//Enable VIC III
 		sta $d02f
 		lda #$96
 		sta $d02f
+}
+
+.macro enableVIC4Registers () {
 		lda #$00
 		tax 
 		tay 
 		taz 
 		map
 		eom
-}
 
-.macro enableVIC4Registers () {
 		lda #$47	//Enable VIC IV
 		sta $d02f
 		lda #$53
 		sta $d02f
-		lda #$00
-		tax 
-		tay 
-		taz 
-		map
-		eom
+
+
 }
 
 .macro disableC65ROM() {
@@ -88,7 +92,6 @@
 	eom
 }
 
-
 .macro VIC4_SetCharLocation(addr) {
 	lda #[addr & $ff]
 	sta $d068
@@ -96,4 +99,15 @@
 	sta $d069
 	lda #[[addr & $ff0000]>>16]
 	sta $d06a
+}
+
+.macro VIC4_SetScreenLocation(addr) {
+	lda #[addr & $ff]
+	sta $d060
+	lda #[[addr & $ff00]>>8]
+	sta $d061
+	lda #[[addr & $ff0000]>>16]
+	sta $d062
+	lda #[[[addr & $ff0000]>>24] & $0f]
+	sta $d063
 }
