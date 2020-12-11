@@ -1,48 +1,21 @@
 
 # Mega65 - KickAssembler 45GS02 Pseudocommands
-
-A set of pseudocommands for KickAssembler to allow you to use all the 45GS02 instructions.
+A 45gs02 syntax highlighting file for use in Sublime Text when using the Kick Assembler from KickC, and some macros to simplify some Mega65 operations. 
 
 ## Usage
-Simply put m65opcodes.asm somewhere in your project structure and import it at the top of your entry file:
+Simply put m65macros.asm somewhere in your project structure and import it at the top of your entry file:
 ```
-	#import "m65opcodes.asm"
+	#import "m65macros.asm"
 ```
+## Using the Kick Assembler found in KickC
 
-## Notes
-Some opcodes require a colon prefix (generally when an existing opcode has new addressing modes that did not exist in the 65c02 instruction set), they are as follows:
+In order to properly assemble 45gs02, you will need to use the Kick Assembler jar made by Jesper Gravgaard, found in KickC @
 
-* ALL base page indirect z-indexed
-```
-	:adc ($12), z
-	:and ($f8), z
-```
-* All 16-bit relative branches 
-```
-	:bcc myLabel
-	:bcs myLabel
-	:beq myLabel
-```
-* Indirect JSR instructions 
-```
-	:jsr ($ffff)
-	:jsr ($ffff, x)
-```
-* RTS using immediate addressing mode
-```
-	:rts #$12
-```
-* STX $nnnn, y and STY $nnnn,x 
-```
-	:stx $beef, y
-	:sty $beef, x	
-```
-Additionally due to pseudocommand and Kick assembler restrictions the stack relative indirect indexed by Y mode of LDA and STA have their own mnemonic:
-```
-	ldasp ($ff), y
-	stasp ($ff), y
-``` 
+https://gitlab.com/camelot/kickc/-/blob/master/repo/cml/kickass/kickassembler/5.16-65ce02.i/kickassembler-5.16-65ce02.i.jar
 
+When assembling, make sure you run the Assembler file to invoke the correct class as follows:
+
+java -cp kickass.jar kickass.KickAssembler65CE02  
 
 
 ## SublimeText Syntax File
@@ -53,7 +26,3 @@ Included in this repo is the KickAssembler (Mega65).sublime-syntax which can be 
 ```
 %AppData%\Sublime Text 3\Packages\User
 ```
-
-
-## To Do
-* add unique pseudo opcodes for the Mega65 32-bit instructions
