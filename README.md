@@ -11,7 +11,7 @@ Simply put m65macros.asm somewhere in your project structure and import it at th
 
 In order to properly assemble 45gs02, you will need to use the Kick Assembler jar made by Jesper Gravgaard, found in KickC @
 
-https://gitlab.com/camelot/kickc/-/blob/master/repo/cml/kickass/kickassembler/5.16-65ce02.i/kickassembler-5.16-65ce02.i.jar
+https://gitlab.com/camelot/kickc/-/raw/master/repo/cml/kickass/kickassembler/5.19-65ce02.a/kickassembler-5.19-65ce02.a.jar
 
 When assembling, make sure you run the Assembler file to invoke the correct class as follows:
 
