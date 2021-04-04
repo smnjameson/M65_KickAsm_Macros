@@ -127,12 +127,22 @@
 }
 .macro DMAHeader(SourceBank, DestBank) {
 		.byte $0A // Request format is F018A
-		.if(SourceBank > 0) {
-			.byte $81, SourceBank
+		.byte $80, SourceBank
+		.byte $81, DestBank
+}
+.macro DMAStep(SourceStep, SourceStepFractional, DestStep, DestStepFractional) {
+		.if(SourceStepFractional != 0) {
+			.byte $82, SourceStepFractional
 		}
-		.if(DestBank > 0) {
-			.byte $82, DestBank
+		.if(SourceStep != 1) {
+			.byte $83, SourceStep
 		}
+		.if(DestStepFractional != 0) {
+			.byte $84, DestStepFractional
+		}
+		.if(DestStep != 1) {
+			.byte $85, DestStep
+		}		
 }
 .macro DMADisableTransparency() {
 		.byte $06
@@ -156,14 +166,37 @@
 		.eval Destination = Destination + Length - 1
 	}
 	.word Length //Size of Copy
+
 	.word Source & $ffff
 	.byte [Source >> 16] + backByte
+
 	.word Destination & $ffff
-	.byte [Destination >> 16]  + backByte
+	.byte [[Destination >> 16] & $0f]  + backByte
 	.if(Chain) {
 		.word $0000
 	}
 }
+
+
+.macro DMAFillJob(SourceByte, Destination, Length, Chain) {
+	.byte $00 //No more options
+	.if(Chain) {
+		.byte $07 //Fill and chain
+	} else {
+		.byte $03 //Fill and last request
+	}	
+	
+	.word Length //Size of Copy
+	.word SourceByte
+	.byte $00
+	.word Destination & $ffff
+	.byte [[Destination >> 16] & $0f] 
+	.if(Chain) {
+		.word $0000
+	}
+}
+
+
 .macro DMAMixJob(Source, Destination, Length, Chain, Backwards) {
 	.byte $00 //No more options
 	.if(Chain) {
@@ -182,7 +215,7 @@
 	.word Source & $ffff
 	.byte [Source >> 16] + backByte
 	.word Destination & $ffff
-	.byte [Destination >> 16]  + backByte
+	.byte [[Destination >> 16] & $0f]  + backByte
 	.if(Chain) {
 		.word $0000
 	}
