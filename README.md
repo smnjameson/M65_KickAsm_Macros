@@ -29,5 +29,5 @@ Included in this repo is the KickAssembler (Mega65).sublime-syntax which can be 
 
 #### Location on MacOS
 ```
-/Users/{username}/Library/Application Support/Sublime Text/Packages/User for mac users
+/Users/{username}/Library/Application Support/Sublime Text/Packages/User
 ```
